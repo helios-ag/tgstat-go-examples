@@ -12,10 +12,9 @@ import (
 
 var qs = []*survey.Question{
 	{
-		Name:      "Token",
-		Prompt:    &survey.Input{Message: "Enter your token"},
-		Validate:  survey.Required,
-		Transform: survey.Title,
+		Name:     "Token",
+		Prompt:   &survey.Input{Message: "Enter your token"},
+		Validate: survey.Required,
 	},
 }
 
