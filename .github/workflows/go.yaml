@@ -24,7 +24,3 @@ jobs:
       - name: Build
         run: go build -v ./...
 
-      - name: Test
-        run: make test/codecov
-      - name: Finish
-        run: bash <(curl -s https://codecov.io/bash)
