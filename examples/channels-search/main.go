@@ -26,7 +26,7 @@ var qs = []*survey.Question{
 		Prompt: &survey.Input{Message: "Enter country (default Russia)", Default: "ru"},
 	},
 	{
-		Name:   "Search I nDescription",
+		Name:   "SearchInDescription",
 		Prompt: &survey.Confirm{Message: "Search in description?"},
 	},
 	{
