@@ -4,7 +4,7 @@ go 1.18
 
 require (
 	github.com/AlecAivazis/survey/v2 v2.3.4
-	github.com/helios-ag/tgstat-go v0.0.0-20220521032945-e3b9ee76e0b5
+	github.com/helios-ag/tgstat-go v0.0.0-20220522063232-7e04b77ca447
 )
 
 require (

@@ -44,13 +44,13 @@ func main() {
 		if stat.SpentChannels != "" {
 			fmt.Printf("SpentChannels: %s\n", stat.SpentChannels)
 		}
-		fmt.Printf("spentRequests: %s\n", stat.SpentRequests)
+		fmt.Printf("Spent requests: %s\n", stat.SpentRequests)
 		if stat.SpentWords != "" {
-			fmt.Printf("spentWords: %s\n", stat.SpentWords)
+			fmt.Printf("Spent words: %s\n", stat.SpentWords)
 		}
 		if stat.SpentObjects != "" {
-			fmt.Printf("spentObjects: %s\n", stat.SpentObjects)
+			fmt.Printf("Spent objects: %s\n", stat.SpentObjects)
 		}
-		fmt.Printf("Expired at: %s\n", time.Unix(stat.ExpiredAt, 0))
+		fmt.Printf("Expires at: %s\n", time.Unix(stat.ExpiredAt, 0))
 	}
 }

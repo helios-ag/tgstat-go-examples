@@ -24,17 +24,15 @@ var qs = []*survey.Question{
 	},
 	{
 		Name:   "Group",
-		Prompt: &survey.Input{Message: "Enter group"},
+		Prompt: &survey.Select{Message: "Choose grouping", Options: []string{"hour", "day", "week", "month"}},
 	},
 	{
-		Name:      "StartTime",
-		Prompt:    &survey.Input{Message: "Start Time", Default: ""},
-		Transform: survey.Title,
+		Name:   "StartTime",
+		Prompt: &survey.Input{Message: "Start Time", Default: ""},
 	},
 	{
-		Name:      "EndTime",
-		Prompt:    &survey.Input{Message: "End Time", Default: ""},
-		Transform: survey.Title,
+		Name:   "EndTime",
+		Prompt: &survey.Input{Message: "End Time", Default: ""},
 	},
 }
 
@@ -65,12 +63,12 @@ func main() {
 
 	var group *string
 	if answers.Group != "" {
-		group = String(answers.Group)
+		group = tgstat.String(answers.Group)
 	}
 	req := channels.ChannelSubscribersRequest{
 		ChannelId: answers.ChannelId,
-		StartDate: String(startTime),
-		EndDate:   String(endTime),
+		StartDate: tgstat.String(startTime),
+		EndDate:   tgstat.String(endTime),
 		Group:     group,
 	}
 
@@ -88,11 +86,4 @@ func main() {
 		fmt.Printf("Period: %s\n", info.Period)
 	}
 
-}
-
-func String(v string) *string {
-	if v == "" {
-		return nil
-	}
-	return &v
 }
