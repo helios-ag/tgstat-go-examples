@@ -35,11 +35,11 @@ var qs = []*survey.Question{
 		Prompt: &survey.Input{Message: "End Time", Default: ""},
 	},
 	{
-		Name:   "Hide forwards",
+		Name:   "HideForwards",
 		Prompt: &survey.Confirm{Message: "Hide Forwards", Default: false},
 	},
 	{
-		Name:   "Strong search",
+		Name:   "StrongSearch",
 		Prompt: &survey.Confirm{Message: "Strong Search", Default: false},
 	},
 	{
@@ -47,11 +47,11 @@ var qs = []*survey.Question{
 		Prompt: &survey.Select{Message: "Choose grouping", Options: []string{"day", "week", "month"}},
 	},
 	{
-		Name:   "Extended syntax",
+		Name:   "ExtendedSyntax",
 		Prompt: &survey.Confirm{Message: "Enable extended syntax", Default: false},
 	},
 	{
-		Name:   "Minus words",
+		Name:   "MinusWords",
 		Prompt: &survey.Input{Message: "Minus Words"},
 	},
 }
@@ -88,18 +88,18 @@ func main() {
 
 	var group *string
 	if answers.Group != "" {
-		group = String(answers.Group)
+		group = tgstat.String(answers.Group)
 	}
 	req := words.MentionPeriodRequest{
 		Q:              answers.Q,
-		PeerType:       String(answers.PeerType),
-		StartDate:      String(startTime),
-		EndDate:        String(endTime),
-		HideForwards:   Bool(answers.HideForwards),
-		StrongSearch:   Bool(answers.StrongSearch),
-		MinusWords:     String(answers.MinusWords),
+		PeerType:       tgstat.String(answers.PeerType),
+		StartDate:      tgstat.String(startTime),
+		EndDate:        tgstat.String(endTime),
+		HideForwards:   tgstat.Bool(answers.HideForwards),
+		StrongSearch:   tgstat.Bool(answers.StrongSearch),
+		MinusWords:     tgstat.String(answers.MinusWords),
 		Group:          group,
-		ExtendedSyntax: Bool(answers.ExtendedSyntax),
+		ExtendedSyntax: tgstat.Bool(answers.ExtendedSyntax),
 	}
 
 	tgstat.Token = answers.Token
@@ -119,13 +119,13 @@ func main() {
 
 	chanReq := words.MentionsByChannelRequest{
 		Q:              answers.Q,
-		PeerType:       String(answers.PeerType),
-		StartDate:      String(startTime),
-		EndDate:        String(endTime),
-		HideForwards:   Bool(answers.HideForwards),
-		StrongSearch:   Bool(answers.StrongSearch),
-		MinusWords:     String(answers.MinusWords),
-		ExtendedSyntax: Bool(answers.ExtendedSyntax),
+		PeerType:       tgstat.String(answers.PeerType),
+		StartDate:      tgstat.String(startTime),
+		EndDate:        tgstat.String(endTime),
+		HideForwards:   tgstat.Bool(answers.HideForwards),
+		StrongSearch:   tgstat.Bool(answers.StrongSearch),
+		MinusWords:     tgstat.String(answers.MinusWords),
+		ExtendedSyntax: tgstat.Bool(answers.ExtendedSyntax),
 	}
 
 	tgstat.Token = answers.Token
@@ -139,9 +139,8 @@ func main() {
 
 	for _, mentions := range mentions.Response.Items {
 		fmt.Printf("ViewsCount %d\n", mentions.ViewsCount)
-		fmt.Printf("ChannelID %d\n", mentions.ChannelID)
 		fmt.Printf("MentionsCount %d\n", mentions.MentionsCount)
-		fmt.Printf("LastMentionDate %d\n", mentions.LastMentionDate)
+		fmt.Printf("LastMentionDate %s\n", time.Unix(int64(mentions.LastMentionDate), 0))
 	}
 
 	for _, channelInfo := range mentions.Response.Channels {
@@ -156,15 +155,4 @@ func main() {
 		fmt.Printf("ParticipantsCount: %d\n", channelInfo.ParticipantsCount)
 	}
 
-}
-
-func String(v string) *string {
-	if v == "" {
-		return nil
-	}
-	return &v
-}
-
-func Bool(b bool) *bool {
-	return &b
 }
