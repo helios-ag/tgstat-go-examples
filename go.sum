@@ -15,6 +15,8 @@ github.com/helios-ag/tgstat-go v0.0.0-20220514025444-1ff93f879e98 h1:AICOS3vX6gY
 github.com/helios-ag/tgstat-go v0.0.0-20220514025444-1ff93f879e98/go.mod h1:A3zy1r63M9rGfHgu0bchihyyYdcYlRpc44Mw1prIqfM=
 github.com/helios-ag/tgstat-go v0.0.0-20220522063232-7e04b77ca447 h1:fXNZmESUIWYc8c9+48MOTqv/co86PZWUKIsk8wDk/yU=
 github.com/helios-ag/tgstat-go v0.0.0-20220522063232-7e04b77ca447/go.mod h1:8tMmg1tM4QLN4IJjm3garwD/3lTW1sbtiB1hSw8VnRs=
+github.com/helios-ag/tgstat-go v0.0.0-20220626084129-5b1b105c55fc h1:1cwp8m+TE/N8N8rOYF8b+2ZnsO2wCasLk8WqDKicfww=
+github.com/helios-ag/tgstat-go v0.0.0-20220626084129-5b1b105c55fc/go.mod h1:8tMmg1tM4QLN4IJjm3garwD/3lTW1sbtiB1hSw8VnRs=
 github.com/hinshun/vt10x v0.0.0-20220119200601-820417d04eec h1:qv2VnGeEQHchGaZ/u7lxST/RaJw+cv273q79D81Xbog=
 github.com/hinshun/vt10x v0.0.0-20220119200601-820417d04eec/go.mod h1:Q48J4R4DvxnHolD5P8pOtXigYlRuPLGl6moFx3ulM68=
 github.com/kballard/go-shellquote v0.0.0-20180428030007-95032a82bc51 h1:Z9n2FFNUXsshfwJMBgNA0RU6/i7WVaAegv3PtuIHPMs=
