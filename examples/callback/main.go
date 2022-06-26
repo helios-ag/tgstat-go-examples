@@ -70,8 +70,8 @@ func main() {
 			fmt.Fprintf(w, resp.Status)
 			fmt.Fprintf(w, resp.Response.Url)
 			fmt.Fprintf(w, resp.Response.LastErrorMessage)
-			fmt.Fprintf(w, fmt.Sprint(resp.Response.LastErrorDate))
-			fmt.Fprintf(w, fmt.Sprint(resp.Response.PendingUpdateCount))
+			fmt.Fprint(w, resp.Response.LastErrorDate)
+			fmt.Fprint(w, resp.Response.PendingUpdateCount)
 
 		}
 		fmt.Fprintf(w, "error getting callBack info: %v\n", errInfo)
@@ -86,7 +86,7 @@ func main() {
 		if errInfo != nil {
 			fmt.Fprintf(w, "error subscribing: %v\n", errInfo)
 		} else {
-			fmt.Fprintf(w, fmt.Sprint(resp.SubscriptionId))
+			fmt.Fprint(w, fmt.Sprint(resp.SubscriptionId))
 		}
 	})
 
