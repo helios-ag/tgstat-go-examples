@@ -47,7 +47,7 @@ func main() {
 	http.HandleFunc("/set", func(w http.ResponseWriter, r *http.Request) {
 		cbReq, res, setErr := callback.SetCallback(context.Background(), answers.CallbackURL)
 		callbackReq = cbReq.VerifyCode
-		fmt.Fprintf(w, callbackReq)
+		fmt.Fprint(w, callbackReq)
 		if setErr != nil {
 			fmt.Printf("error setting callBack: %v\n", setErr)
 			fmt.Printf("status: %v\n", res.Status)
@@ -60,7 +60,7 @@ func main() {
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		switch r.Method {
 		case http.MethodPost:
-			fmt.Fprintf(w, callbackReq)
+			fmt.Fprint(w, callbackReq)
 		}
 	})
 
@@ -70,8 +70,8 @@ func main() {
 			fmt.Fprintf(w, resp.Status)
 			fmt.Fprintf(w, resp.Response.Url)
 			fmt.Fprintf(w, resp.Response.LastErrorMessage)
-			fmt.Fprintf(w, fmt.Sprintf("%d", resp.Response.LastErrorDate))
-			fmt.Fprintf(w, fmt.Sprintf("%d", resp.Response.PendingUpdateCount))
+			fmt.Fprintf(w, fmt.Sprint(resp.Response.LastErrorDate))
+			fmt.Fprintf(w, fmt.Sprint(resp.Response.PendingUpdateCount))
 
 		}
 		fmt.Fprintf(w, "error getting callBack info: %v\n", errInfo)
@@ -86,7 +86,7 @@ func main() {
 		if errInfo != nil {
 			fmt.Fprintf(w, "error subscribing: %v\n", errInfo)
 		} else {
-			fmt.Fprintf(w, fmt.Sprintf("%d", resp.SubscriptionId))
+			fmt.Fprintf(w, fmt.Sprint(resp.SubscriptionId))
 		}
 	})
 
